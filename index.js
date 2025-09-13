@@ -3,6 +3,7 @@ import connectDB from "./src/config/db.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import router from "./src/routers/index.js";
+import { swaggerUi, specs } from "./src/config/swagger.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,18 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+// Swagger API Documentation
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, {
+    explorer: true,
+    customCss: ".swagger-ui .topbar { display: none }",
+    customSiteTitle: "BE X37 API Documentation",
+  })
+);
+
 app.use("/api", router);
 
 //handle errors

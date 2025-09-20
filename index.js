@@ -33,6 +33,8 @@ app.use(
 
 // some changes
 
+//add new route
+
 app.use("/api", router);
 
 //handle errors

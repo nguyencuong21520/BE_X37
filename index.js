@@ -15,6 +15,8 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 
+//add new route for authen branch
+
 //define routes
 app.get("/", (req, res) => {
   res.send("Hello World");
